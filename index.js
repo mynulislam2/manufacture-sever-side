@@ -130,16 +130,7 @@ async function run() {
             const result = await BookingCollection.findOne(query);
             res.send(result)
         })
-        app.post('/reviews', async (req, res) => {
-            const reviews = req.body
-            const doc = {
-                description: reviews.description,
-                ratings: reviews.Ratings
-            }
-            const result = await ReviewCollection.insertOne(doc);
-
-            res.send(result)
-        })
+        
         app.get('/reviews', async (req, res) => {
             const query = {}
 
