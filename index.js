@@ -70,6 +70,14 @@ async function run() {
             const result = await cursor.toArray();
             res.send(result)
         })
+        app.delete('/tool/:id', async (req, res) => {
+            const id = req.params.id
+            const query = { _id: ObjectId(id) }
+            const result = await jontroCollection.deleteOne(query);
+            res.send(result)
+        })
+
+
         // order set
 
         app.post('/order', async (req, res) => {
