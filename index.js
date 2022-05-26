@@ -12,6 +12,8 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const uri = `mongodb+srv://mynul:${process.env.PASS}@cluster0.sfcnp.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
+// jwt verify
+
 function verifyJWT(req, res, next) {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
@@ -31,13 +33,14 @@ function verifyJWT(req, res, next) {
 async function run() {
     try {
         await client.connect();
+        // all collection
         const jontroCollection = client.db('JontroManufacture').collection('tools');
         const BookingCollection = client.db('BookingCollection').collection('Booking');
         const ReviewCollection = client.db('ReviewCollection').collection('review');
         const userCollection = client.db('userCollection').collection('user');
         const registeredUser
             = client.db('registeredUser').collection('users');
-
+// payment system
 
         app.post('/create-payment-intent', async (req, res) => {
             const serviceChare = req.body;
