@@ -86,7 +86,7 @@ async function run() {
             const result = await BookingCollection.insertOne(doc);
             res.send(result)
         })
-        
+//order per id  
         app.put('/order/:id', async (req, res) => {
             const payment = req.body
             const id = req.params.id
@@ -103,6 +103,7 @@ async function run() {
 
             res.send(result)
         })
+        //all the order
         app.get('/order', verifyJWT, async (req, res) => {
             const query = {}
             const result = await BookingCollection.find(query).toArray()
