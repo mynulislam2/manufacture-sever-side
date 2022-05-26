@@ -54,7 +54,7 @@ async function run() {
             res.send({ clientSecret: paymentIntent.client_secret })
         });
 
-
+// tools
 
         app.get('/tools', async (req, res) => {
             const query = {}
@@ -62,6 +62,7 @@ async function run() {
             const result = await cursor.toArray();
             res.send(result)
         })
+        // tools per id
         app.get('/tool/:id', async (req, res) => {
             const id = req.params.id
             const query = { _id: ObjectId(id) };
@@ -69,6 +70,7 @@ async function run() {
             const result = await cursor.toArray();
             res.send(result)
         })
+        // order set
 
         app.post('/order', async (req, res) => {
             const Data = req.body
@@ -84,6 +86,7 @@ async function run() {
             const result = await BookingCollection.insertOne(doc);
             res.send(result)
         })
+        
         app.put('/order/:id', async (req, res) => {
             const payment = req.body
             const id = req.params.id
