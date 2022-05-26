@@ -256,20 +256,7 @@ async function run() {
             res.send(result)
         })
 
-        app.put('/shipment/:id', async (req, res) => {
-            const shipments = req.body.shipped
-            const id = req.params.id
-            const filter = {_id: ObjectId(id)}
-            const options = { upsert: true };
-
-            const updateDoc = {
-                $set: {
-                    shipped: shipments
-                }
-            }
-            const result = await BookingCollection.updateOne(filter, updateDoc, options);
-            res.send(result)
-        })
+        
 
 
     } finally {
