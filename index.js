@@ -109,12 +109,14 @@ async function run() {
             const result = await BookingCollection.find(query).toArray()
             res.send(result)
         })
+        // jwt  
         app.get('/order', verifyJWT, async (req, res) => {
             const email = req.query.email
             const query = { userEmail: email }
             const result = await BookingCollection.find(query).toArray()
             res.send(result)
         })
+        // delete order
         app.delete('/order/:id', async (req, res) => {
             const id = req.params.id
             const query = { _id: ObjectId(id) }
